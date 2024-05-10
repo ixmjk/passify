@@ -1,0 +1,9 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}{{ PROJECT_NAME }} - {% if name %}{{ name }}{% endif %}{% endblock %}
+
+{% block branding %}
+    <a class='navbar-brand' rel="nofollow" href="">
+        {{ PROJECT_NAME }}
+    </a>
+{% endblock %}

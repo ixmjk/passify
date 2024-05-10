@@ -1,0 +1,23 @@
+{% load i18n %}
+
+{% block subject %}
+{% blocktrans %}{{ PROJECT_NAME }} - A quick reminder{% endblocktrans %}
+{% endblock subject %}
+
+{% block text_body %}
+{% blocktrans %}We detected that your {{ PROJECT_NAME }} account master password hasn't been changed in a long time.{% endblocktrans %}
+
+{% trans "To keep your account safe, we recommend changing it." %}
+
+{% trans "Thanks," %}
+{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}
+{% endblock text_body %}
+
+{% block html_body %}
+<p>{% blocktrans %}We detected that your {{ PROJECT_NAME }} account master password hasn't been changed in a long time.{% endblocktrans %}</p>
+
+<p>{% trans "To keep your account safe, we recommend changing it." %}</p>
+
+<p>{% trans "Thanks," %}</p>
+<p>{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}</p>
+{% endblock html_body %}

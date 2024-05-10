@@ -1,0 +1,27 @@
+{% load i18n %}
+
+{% block subject %}
+{% blocktrans %}{{ PROJECT_NAME }} - Activate your account{% endblocktrans %}
+{% endblock subject %}
+
+{% block text_body %}
+{% trans "Please click the following link to activate your account:" %}
+
+{{ protocol }}://{{ domain }}/{{ url|safe }}
+
+{% trans "If you didn't request this, you can safely ignore this email." %}
+
+{% trans "Thanks," %}
+{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}
+{% endblock text_body %}
+
+{% block html_body %}
+<p>{% trans "Please click the following link to activate your account:" %}</p>
+
+<p><a href="{{ protocol }}://{{ domain }}/{{ url|safe }}">{{ protocol }}://{{ domain }}/{{ url|safe }}</a></p>
+
+<p>{% trans "If you didn't request this, you can safely ignore this email." %}</p>
+
+<p>{% trans "Thanks," %}</p>
+<p>{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}</p>
+{% endblock html_body %}

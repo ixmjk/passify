@@ -1,0 +1,72 @@
+services:
+
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - 5672:5672
+    restart: always
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    restart: always
+
+  smtp4dev:
+    image: rnwood/smtp4dev:latest
+    ports:
+      - 5000:80
+    restart: always
+
+  celery:
+    build: .
+    command: celery -A config worker --loglevel=info
+    depends_on:
+      - rabbitmq
+    restart: always
+    volumes:
+      - .:/app
+
+  celery-beat:
+    build: .
+    command: celery -A config beat --loglevel=info
+    depends_on:
+      - rabbitmq
+    restart: always
+    volumes:
+      - .:/app
+
+  flower:
+    build: .
+    command: celery -A config flower
+    depends_on:
+      - rabbitmq
+      - celery
+    ports:
+      - 5555:5555
+    restart: always
+
+  backend:
+    build: .
+    command: ./docker-entrypoint.sh
+    ports:
+      - 8000:8000
+    depends_on:
+      - rabbitmq
+      - redis
+      - smtp4dev
+      - celery
+      - celery-beat
+      - flower
+    restart: on-failure
+    volumes:
+      - .:/app
+
+  tests:
+    build: .
+    command: ptw
+    depends_on:
+      - backend
+    tty: true
+    volumes:
+      - .:/app

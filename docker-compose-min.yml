@@ -1,0 +1,20 @@
+services:
+
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - 5672:5672
+    restart: always
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    restart: always
+
+  smtp4dev:
+    image: rnwood/smtp4dev:latest
+    ports:
+      - 2525:25
+      - 5000:80
+    restart: always

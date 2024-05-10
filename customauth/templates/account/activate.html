@@ -1,0 +1,25 @@
+{% extends "account/base.html" %}
+{% load static %}
+
+{% block card_header_content %}
+  <h1><b>{{ PROJECT_NAME }}</b></h1>
+  <h3>Account Activation</h3>
+  <p>
+    Thank you for registering! Click the button below to activate your
+    account.
+  </p>
+{% endblock card_header_content %}
+
+{% block card_body_content %}
+  <input type="hidden" id="uid" value="{{ uid }}" />
+  <input type="hidden" id="token" value="{{ token }}" />
+  <button id="submitButton" class="btn btn-primary">Activate account</button>
+{% endblock card_body_content %}
+
+{% block javascript %}
+  <script
+    type="module"
+    defer
+    src="{% static 'account/activate.js' %}">
+  </script>
+{% endblock javascript %}

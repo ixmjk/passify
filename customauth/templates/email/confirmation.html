@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% block subject %}
+{% blocktrans %}{{ PROJECT_NAME }} - Your account has been activated!{% endblocktrans %}
+{% endblock subject %}
+
+{% block text_body %}
+{% trans "Your account has been successfully activated!" %}
+
+{% trans "Thanks," %}
+{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}
+{% endblock text_body %}
+
+{% block html_body %}
+<p>{% trans "Your account has been successfully activated!" %}</p>
+
+<p>{% trans "Thanks," %}</p>
+<p>{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}</p>
+{% endblock html_body %}

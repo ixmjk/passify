@@ -1,0 +1,33 @@
+{% load i18n %}
+
+{% block subject %}
+{% blocktrans %}{{ PROJECT_NAME }} - Security alert for {{ user }}{% endblocktrans %}
+{% endblock subject %}
+
+{% block text_body %}
+{% blocktrans %}We noticed a new sign in to your {{ PROJECT_NAME }} account.{% endblocktrans %}
+
+{% blocktrans %}{{ device }}{% endblocktrans %}
+{% blocktrans %}{{ date }}{% endblocktrans %}
+{% blocktrans %}{{ time }}{% endblocktrans %}
+
+{% trans "If you didn’t take this action, change your account email and password right away." %}
+{% blocktrans %}For more info, visit {{ PROJECT_NAME }} Support.{% endblocktrans %}
+
+{% trans "Thanks," %}
+{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}
+{% endblock text_body %}
+
+{% block html_body %}
+<p>{% blocktrans %}We noticed a new sign-in to your {{ PROJECT_NAME }} account.{% endblocktrans %}</p>
+
+<p>{% blocktrans %}{{ device }}{% endblocktrans %}</p>
+<p>{% blocktrans %}{{ date }}{% endblocktrans %}</p>
+<p>{% blocktrans %}{{ time }}{% endblocktrans %}</p>
+
+<p>{% trans "If you didn’t take this action, change your account email and password right away." %}</p>
+<p>{% blocktrans %}For more info, visit {{ PROJECT_NAME }} Support.{% endblocktrans %}</p>
+
+<p>{% trans "Thanks," %}</p>
+<p>{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}</p>
+{% endblock html_body %}

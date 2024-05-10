@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% block subject %}
+{% blocktrans %}{{ PROJECT_NAME }} - Your account email has been changed{% endblocktrans %}
+{% endblock subject %}
+
+{% block text_body %}
+{% trans "Your account email has been successfully changed!" %}
+
+{% trans "Thanks," %}
+{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}
+{% endblock text_body %}
+
+{% block html_body %}
+<p>{% trans "Your account email has been successfully changed!" %}</p>
+
+<p>{% trans "Thanks," %}</p>
+<p>{% blocktrans %}The {{ PROJECT_NAME }} account team{% endblocktrans %}</p>
+{% endblock html_body %}
